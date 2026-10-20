@@ -1,0 +1,14 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
+  "name": "git-skills",
+  "description": "Git 操作スキル（/git-commit /git-branches /git-sync）。手動起動専用",
+  "owner": { "name": "ShaF-u", "url": "https://github.com/ShaF-u" },
+  "plugins": [
+    {
+      "name": "git-skills",
+      "description": "Git 操作スキル（/git-commit /git-branches /git-sync）。手動起動専用",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}
