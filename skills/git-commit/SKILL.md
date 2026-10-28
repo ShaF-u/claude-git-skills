@@ -29,7 +29,8 @@ Never create, switch, or delete branches. Never force-push, amend, or pass `--no
 5. **Commit**:
    - Stage explicit paths (all reviewed changes + doc edits, minus exclusions). Prefer `git add -A` then `git reset -- <excluded>`.
    - Message in Japanese, matching the style of `git log --oneline -10`: one subject line saying what changed and why; a body only when the why needs more. Use the hint if given. Append the commit attribution trailer if the session provides one.
-   - Write the message to a temp file in the scratchpad and run `git commit -F <file>`.
+   - Write the message to a temp file in the scratchpad with the Write tool (UTF-8, no BOM) and run `git commit -F <file>`. Never write it with PowerShell `Out-File`/`Set-Content`/`>`: Windows PowerShell 5.1 prepends a BOM, which ends up as the first character of the subject.
+   - Before committing, check `head -c 3 <file> | od -An -tx1`; if it prints `ef bb bf`, rewrite the file without the BOM first.
    - Hook fails → fix the cause, re-stage, and make a new commit attempt.
 6. **Push** (skip if `--no-push`): upstream set → `git push`; else `git push -u origin <branch>`. Rejected (non-fast-forward) → stop and suggest `/git-sync`.
 
